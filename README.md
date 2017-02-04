@@ -13,10 +13,10 @@ invisible pixels to make your recipient's actions visible
 
 All routes are mounted at `/api/`
 
-method route | name | description | params | response
-----------------------------------------------
-get `hello/:name` | hello world | says hi! | n/a | `hello <name>!`
-post `tag/new` | new tag | create a new tag | n/a | `{ _id: UUID, url: URL (/api/tag/:_id/log) }`
-get `tag/:id` | retrieve tag | get info about tag | n/a | `{ _id: UUID, url: URL, log: [{ timestamp: DATETIME, ip: IP_ADDR}]}`
-get `tag/:id/log` | log tag | log a retrieval of a tag | n/a | invisible pixel
-get `tag/` | get all tags | get a list of all tags | n/a | `{ tags: [{_id: UUID, url: URL} ... ] }`
+method route | description | params | response
+-------------|-------------|--------|---------
+`GET hello/:name` | hello world | n/a | `hello <name>!`
+`POST tag/new` | create a new tag | n/a | `{ _id: UUID,url: URL (/api/tag/:_id/log) }`
+`GET tag/:id` | get info about tag | n/a | `{ _id: UUID,url: URL,log: [{ timestamp: DATETIME, ip: IP_ADDR}]}`
+`GET tag/:id/log` | log a retrieval of a tag | n/a | invisible pixel
+`GET tag/` | get a list of all tags | n/a | `{ tags: [{_id: UUID, url: URL} ... ] }`
