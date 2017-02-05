@@ -3,6 +3,7 @@
 module Main where
 
 import Lib (Tag, createTag, getTag, logRecord)
+import Control.Monad.IO.Class
 import Data.Monoid ((<>))
 import Web.Scotty
 
@@ -23,8 +24,15 @@ main = do
 
     get "/api/tag/:id/log" $ do
       t_id <- param "id"
-      let tag = getTag t_id
-      json (logRecord tag)
+      -- currently not implemented
+      -- IP Address is not available at the application level
+      -- need to add lower level middleware (TCP/IP - socket info)
+      -- maybe_ip_addr <- header "blah"
+      -- let ip_addr = case maybe_ip_addr of Nothing -> ""
+      --                                     Just s -> s
+      let ip_addr = "N/A"
+      u_tag <- liftIO $ logRecord (getTag t_id) ip_addr
+      json (u_tag)
 
     get "/api/tag/" $ do
       return ()
